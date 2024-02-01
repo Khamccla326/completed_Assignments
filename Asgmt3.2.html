@@ -1,0 +1,118 @@
+<!-- Khalil McClain- Lewis Assignment 3.2 -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palindrome Checker and More</title>
+    <style>
+        body {
+            background-color: red; /* Set background color */
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333; /* Heading color */
+        }
+
+        img {
+            width: 150px; /* Set image width */
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        input {
+            padding: 10px;
+            font-size: 16px;
+            margin: 10px;
+        }
+
+        button {
+            background-color: #008CBA; /* Button background color */
+            color: white; /* Button text color */
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #005F80; /* Button background color on hover */
+        }
+
+        #output {
+            color: black; /* Output text color */
+            font-size: 18px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Palindrome Mystery?</h1>
+    <img src="creative2_image.jpg" alt="Creative Image">
+    <input type="text" id="userInput" placeholder="Enter a word or phrase">
+    <button onclick="checkPalindrome()">Submit</button>
+    <p id="output"></p>
+
+    <!-- Additional Inputs for User's Information -->
+    <h2>Enter Your Information</h2>
+    <input type="text" id="firstName" placeholder="First Name">
+    <input type="text" id="lastName" placeholder="Last Name">
+    <input type="text" id="zipCode" placeholder="Zip Code">
+    <button onclick="processUserInfo()">Continue</button>
+
+    <script>
+        // Function to check if a string is a palindrome
+        function isPalindrome(str) {
+            const cleanedString = str.replace(/\s/g, '').toLowerCase();
+            return cleanedString === cleanedString.split('').reverse().join('');
+        }
+
+        // Function to check palindrome and display result
+        function checkPalindrome() {
+            // Get user input
+            const userInput = document.getElementById('userInput').value;
+
+            // Check if the input is a palindrome
+            const palindromeResult = isPalindrome(userInput);
+
+            // Display result
+            const outputElement = document.getElementById('output');
+            if (palindromeResult) {
+                outputElement.innerText = `"${userInput}" is a valid palindrome!`;
+            } else {
+                outputElement.innerText = `"${userInput}" is not a palindrome. Please enter a valid palindrome.`;
+            }
+        }
+
+        // Function to process user information
+        function processUserInfo() {
+            // Get user information
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const zipCode = document.getElementById('zipCode').value;
+
+            // Combine first name and last name
+            const fullName = `${firstName} ${lastName}`;
+
+            // Check if the combined name has more than 20 characters
+            if (fullName.length > 20) {
+                alert("Invalid input: Combined name should not exceed 20 characters.");
+                return;
+            }
+
+            // Check if the zip code is valid (contains 5 digits)
+            if (!/^\d{5}$/.test(zipCode)) {
+                alert("Invalid zip code. Please enter a valid 5-digit zip code.");
+                return;
+            }
+
+            // If inputs are valid, redirect to another page with a secret message
+            window.location.href = `secret_page.html?name=${encodeURIComponent(fullName)}&zip=${encodeURIComponent(zipCode)}`;
+        }
+    </script>
+</body>
+</html>

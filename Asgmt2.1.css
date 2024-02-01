@@ -1,0 +1,39 @@
+/* Reset some default styles for better consistency across browsers */
+body, h1, p, button {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-image: url('wizbgimg.jpeg'); /* Set background image */
+    background-size: cover; /* Cover the entire viewport with the background image */
+    color: white; /* Default text color */
+}
+
+h1 {
+    color: gold; /* Heading color */
+    text-align: center;
+    padding: 20px;
+}
+
+button {
+    background-color: purple; /* Button background color */
+    color: white; /* Button text color */
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    margin: 20px;
+}
+
+button:hover {
+    background-color: red; /* Button background color on hover */
+}
+
+#result {
+    color: black; /* Text color for the game result */
+    text-align: center;
+    font-size: 18px;
+    margin-top: 20px;
+}
